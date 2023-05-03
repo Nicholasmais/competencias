@@ -72,7 +72,8 @@
         .then((data) => 
           data.forEach(obj =>{
             const div_competencias = document.createElement("div");
-            div_competencias.class = "div-competencias";
+            div_competencias.setAttribute('class', "div-competencias");
+            div_competencias.setAttribute('key', obj.id);
 
             const header = document.createElement("span");
             const content = document.createElement("div");
