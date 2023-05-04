@@ -58,6 +58,8 @@ const competencias = [
   }
 ];
 
+const minhasCompetencias = [
+];
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo à minha API!');
@@ -70,11 +72,11 @@ app.get('/competencias', (req, res) => {
 app.post("/competencias", (req, res) => {
   obj_to_save = req.body;
   if (obj_to_save.nome.trim() === "" || obj_to_save.descricao.trim() === ""){
-    return res.status(400).json({"status":"Preencha todos os campos."})
+    return res.status(400).json({"mensagem":"Preencha todos os campos."})
   }
   obj_to_save = {...obj_to_save, id:competencias.length + 1}
   competencias.push(obj_to_save);
-  return res.json(obj_to_save);
+  return res.json({"mensagem":"Sucesso ao criar competencia"});
 });
 
 app.delete("/competencias/:id", (req, res) => {
@@ -88,19 +90,59 @@ app.delete("/competencias/:id", (req, res) => {
   );
   if (index_to_remove >= 0){
     competencias.splice(index_to_remove, 1);
-    return res.json({ "status": "sucesso" });
+    return res.json({ "mensagem": "Sucesso ao deletar competência" });
   }
-  return res.status(404).json({"status":"Não encontrado"});
+  return res.status(404).json({"mensagem":"Não encontrado"});
 });
 
 app.put("/competencias", (req, res) => {
   const obj_to_update = req.body;
   if (obj_to_update.nome.trim() === "" || obj_to_update.descricao.trim() === ""){
-    return res.status(400).json({"status":"Preencha todos os campos."});
+    return res.status(400).json({"mensagem":"Preencha todos os campos."});
   }
   competencias[obj_to_update.id-1] = obj_to_update;
-  return res.json({"status":"sucesso"});
+  return res.json({"mensagem":"Sucesso ao atualizar competência"});
 })
+
+
+app.get('/self-competencias', (req, res) => {
+  res.json(minhasCompetencias);
+});
+
+app.post("/self-competencias", (req, res) => {
+  obj_to_add = req.body;
+  if (obj_to_add.id.trim() === ""){
+    return res.status(400).json({"mensagem":"Preencha todos os campos."})
+  }
+  let index_competence_to_add = -1;
+  competencias.forEach((competencia, i) => {
+    if (competencia.id === parseInt(obj_to_add.id)){
+        index_competence_to_add = i;
+      }
+    }
+  );
+  if (index_competence_to_add >= 0){
+    minhasCompetencias.push(competencias[index_competence_to_add]);
+    return res.json({ "mensagem": "Sucesso ao Minhas competência" });
+  }
+  return res.status(404).json({"mensagem":"Não encontrado"});
+});
+
+app.delete("/self-competencias/:id", (req, res) => {
+  const id =  parseInt(req.params.id);
+  let index_to_remove = -1;
+  minhasCompetencias.forEach((competencia, i) => {
+    if (competencia.id === id){
+      index_to_remove = i;
+      }
+    }
+  );
+  if (index_to_remove >= 0){
+    minhasCompetencias.splice(index_to_remove, 1);
+    return res.json({ "mensagem": "Sucesso ao remover competência" });
+  }
+  return res.status(404).json({"mensagem":"Não encontrado"});
+});
 
 app.listen(3000, () => {
   console.log('A API está rodando na porta 3000 uhul top');

@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil</title>
+  <title>all-competences</title>
   <style>
     .competencias{
       width: 450px;
+      min-height: 50px;
       margin: 0 auto;
       display: flex;
       flex-direction: row;
@@ -17,7 +18,7 @@
     }
 
     .competencias > :nth-child(n){
-      background-color:  azure;
+      background-color:  rgb(196, 255, 255);
       margin: 1rem;
       padding: 1rem;
       text-align: center;
@@ -30,7 +31,7 @@
     nav{
       display: inline-flex;
       flex-direction: row;
-      background-color: aliceblue;
+      background-color: rgb(255, 255, 196);
       gap: 2rem;
       padding: .5rem;
       margin-bottom: 2rem;
@@ -52,11 +53,11 @@
 <body>
   <header>
     <nav>
-      <a class="perfil" href="/index.html">
-        Meu perfil
+      <a class="all-competences" href="/index.html">
+        Ver competências
       </a>
-      <a class="perfil" href="/setCompetence.html">
-        Atribuir competências
+      <a class="all-competences" href="/setCompetence.html">
+        Minhas competências
       </a>
       <a class="criar-competencia" href="/create.html">
         Criar competências
@@ -96,7 +97,7 @@
     const links = document.querySelectorAll('nav a');
 
     links.forEach(link => {
-      if (link.getAttribute('class') === "perfil" && currentPath == '/'){
+      if (link.getAttribute('class') === "all-competences" && currentPath == '/'){
         link.setAttribute('class', link.getAttribute('class') + " active");
       }      
       else if (link.getAttribute('href') === currentPath) {

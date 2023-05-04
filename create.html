@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <title>Criar competência</title>
   <style> 
     header{
@@ -13,7 +14,7 @@
     nav{
       display: inline-flex;
       flex-direction: row;
-      background-color: aliceblue;
+      background-color: rgb(255, 255, 196);
       gap: 2rem;
       padding: .5rem;
       margin-bottom: 2rem;
@@ -33,6 +34,7 @@
 
     .competencias{
       width: 450px;
+      min-height: 50px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -62,11 +64,11 @@
 <body>
   <header>
     <nav>
-      <a class="perfil" href="/index.html">
-        Meu perfil
+      <a class="all-competences" href="/index.html">
+        Meu all-competences
       </a>
-      <a class="perfil" href="/setCompetence.html">
-        Atribuir competências
+      <a class="all-competences" href="/setCompetence.html">
+        Minhas competências
       </a>
       <a class="criar-competencia" href="/create.html">
         Criar competências
@@ -110,9 +112,33 @@
         headers:{'Content-Type':"Application/json"},
         body:JSON.stringify(obj_post)})
           .then(res => {
-              res.json().then(data => console.log(data));            
+              res.json().then(data => {
+                let background = ''
+                if (res.status !== 200){
+                  background = "linear-gradient(to right, #ff4d4d, #ff3333)";                   
+                }
+                else{
+                  background = "linear-gradient(to right, #00b09b, #96c93d)";            
+                }
+                Toastify({
+                    text: data.mensagem,
+                    duration: 2000,
+                    //destination: "https://github.com/apvarun/toastify-js",
+                    //newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                      background: background,
+                    },
+                    onClick: function(){} // Callback after click
+                  }).showToast();
+                console.log(data);
+              });            
           })
         }
   </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>
