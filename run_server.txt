@@ -1,0 +1,4 @@
+BACKEND
+  $ nodemon index.js
+FRONTEND
+  $ python -m http.server
