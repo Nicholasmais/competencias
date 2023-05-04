@@ -1,0 +1,9 @@
+.button-component{
+  padding: .5rem;
+  background-color: rgb(255, 196, 230);
+  border: 2px solid rgb(245, 152, 206);
+}
+.button-component:hover{
+  cursor: pointer;
+  transform: scale(1.25);
+}
