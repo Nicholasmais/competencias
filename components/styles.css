@@ -6,39 +6,32 @@
 .button-component:hover{
   cursor: pointer;
   transform: scale(1.25);
-}
-.header{  
-  max-width: 75vw;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}              
-.header nav{
-  max-width: 100%;
+}     
+nav{
+  width: clamp(4.75rem,20vw, 7rem);
+  position: fixed;
   display: inline-flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: rgb(255, 255, 196);
   justify-content: space-between;
-  padding: .5rem;
-  margin-bottom: 2rem;
   border-radius: 5px 10px 15px 20px;
 }
-.header nav a{
+nav a{
   color:black;
-  padding: clamp(.25rem, 1vw, 1rem);
+  padding: clamp(.25rem, 1vw, 1rem); 
   text-decoration: none;
   font-size: clamp(.7rem, 2vw, 1rem);
 }
-.header nav a:hover{
+nav a:hover{
   cursor: pointer;
-  transform: scale(1.25);
+  transform: scale(1.125);
 }
-.header nav a.active{
+nav a.active{
   text-decoration: underline;
 }
 
 @media (max-width:560px){
-  .header{
+  /* .header{
     margin-left: calc(12.5% - 0.5rem);
     margin-bottom: 1rem;
     width: 80px;
@@ -86,23 +79,22 @@
     height: 64px;
     background-color: black;
     transform: rotate(135deg);
-  }
-  .header nav{
+  } */
+  nav{
     margin: 0;
-    width: 100%;
+    width: clamp(4.75rem,20vw, 7rem);
     flex-direction: column;
-    padding-top: 64px;
   }
-  .header nav a{
+  nav a{
     background-color: rgb(255, 255, 196);
-    width: calc(80px + .5rem);
+    width: 100%;
     height: 80px;
     z-index: 1;
     margin-left: -0.5rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
   }
-  .header nav a:hover{
+  nav a:hover{
     background-color: rgb(250, 250, 90);
     transform: scale(1);   
   }

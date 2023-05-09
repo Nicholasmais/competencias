@@ -7,22 +7,20 @@ class NavBar extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="components\\styles.css">
-      <header class="header">
-        <nav>
-          <a class="all-competences" href="/index.html">
-            Ver competências
-          </a>
-          <a class="all-competences" href="/setCompetence.html">
-            Minhas competências
-          </a>
-          <a class="criar-competencia" href="/create.html">
-            Criar competências
-          </a>
-          <a class="editar-competencias" href="/edit.html">
-            Editar competências
-          </a>
-        </nav>
-      </header>
+      <nav>
+        <a class="all-competences" href="/index.html">
+          Ver competências
+        </a>
+        <a class="all-competences" href="/setCompetence.html">
+          Minhas competências
+        </a>
+        <a class="criar-competencia" href="/create.html">
+          Criar competências
+        </a>
+        <a class="editar-competencias" href="/edit.html">
+          Editar competências
+        </a>
+      </nav>
     `;
     const header = this.shadowRoot.querySelector('.header');
     header.addEventListener('click', () => {

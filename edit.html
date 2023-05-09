@@ -7,7 +7,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      href="http://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
     <title>Editar competência</title>
     <style>
@@ -90,7 +90,7 @@
       const competences = [];
       const select = document.querySelector("#select");
       const get_competencias = async () => {
-        await fetch("http://192.168.0.55:3000/competencias")
+        await fetch("http://127.0.0.1:3001/competencias")
           .then((res) => res.json())
           .then((data) => {
             data.forEach((obj) => {
@@ -120,7 +120,7 @@
           nome: name_competence.value,
           descricao: description_competence.value,
         };
-        await fetch("http://192.168.0.55:3000/competencias", {
+        await fetch("http://127.0.0.1:3001/competencias", {
           method: "PUT",
           headers: { "Content-Type": "Application/json" },
           body: JSON.stringify(obj_put),
@@ -139,7 +139,7 @@
             Toastify({
               text: data.mensagem,
               duration: 2000,
-              //destination: "https://github.com/apvarun/toastify-js",
+              //destination: "http://github.com/apvarun/toastify-js",
               //newWindow: true,
               close: true,
               gravity: "bottom", // `top` or `bottom`
@@ -156,7 +156,7 @@
       };
 
       const deleteCompetence = async () => {
-        await fetch(`http://192.168.0.55:3000/competencias/${select.value}`, {
+        await fetch(`http://127.0.0.1:3001/competencias/${select.value}`, {
           method: "DELETE",
         }).then((res) => {
           res.json().then((data) => {
@@ -173,7 +173,7 @@
             Toastify({
               text: data.mensagem,
               duration: 2000,
-              //destination: "https://github.com/apvarun/toastify-js",
+              //destination: "http://github.com/apvarun/toastify-js",
               //newWindow: true,
               close: true,
               gravity: "bottom", // `top` or `bottom`
@@ -193,7 +193,7 @@
     <script src="components/navbar.js" type="text/javascript" defer></script>
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
+      src="http://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
   </body>
 </html>

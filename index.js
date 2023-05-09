@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require("cors");
+const morgan = require('morgan');
+
 const app = express();
 
-app.use(cors());
 app.use(express.json())
+app.use(cors());
+app.use(morgan('tiny'));
 
 const competencias = [
   {
@@ -144,6 +147,6 @@ app.delete("/self-competencias/:id", (req, res) => {
   return res.status(404).json({"mensagem":"Não encontrado"});
 });
 
-app.listen(3000, () => {
-  console.log('A API está rodando na porta 3000 uhul top');
+app.listen(3001, () => {
+  console.log('A API está rodando na porta 3001 uhul top');
 });
