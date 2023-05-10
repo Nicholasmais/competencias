@@ -93,7 +93,7 @@
             data.forEach((obj) => {
               const div_competencias = document.createElement("div");
               div_competencias.setAttribute("class", "div-competencias");
-              div_competencias.setAttribute("key", obj.id);
+              div_competencias.setAttribute("key", obj.codigo_competencia);
 
               const header = document.createElement("span");
               header.innerText = obj.nome;
@@ -104,7 +104,7 @@
               button_remove.setAttribute("class", "buttonRemove");
               button_remove.addEventListener("click", async () => {
                 await fetch(
-                  `http://127.0.0.1:3001/self-competencias/${obj.id}`,
+                  `http://127.0.0.1:3001/self-competencias/${obj.codigo_competencia}`,
                   {
                     method: "DELETE",
                   }
@@ -133,8 +133,9 @@
             const competences = [];
             data.forEach((obj) => {
               const option = document.createElement("option");
-              option.value = obj.id;
-              option.innerText = obj.nome;
+              console.log(obj)
+              option.value = obj.codigo_competencia;
+              option.innerText = obj.nome_competencia;
               select.appendChild(option);
               competences.push(obj);
             });

@@ -85,7 +85,7 @@ app.get('/competencias', async(req, res) => {
 
 app.post("/competencias", (req, res) => {
   obj_to_save = req.body;
-  if (obj_to_save.nome.trim() === "" || obj_to_save.descricao.trim() === ""){
+  if (obj_to_save.nome_competencia.trim() === "" || obj_to_save.descricao_competencia.trim() === ""){
     return res.status(400).json({"mensagem":"Preencha todos os campos."})
   }
   obj_to_save = {...obj_to_save, id:competencias.length + 1}
@@ -111,7 +111,7 @@ app.delete("/competencias/:id", (req, res) => {
 
 app.put("/competencias", (req, res) => {
   const obj_to_update = req.body;
-  if (obj_to_update.nome.trim() === "" || obj_to_update.descricao.trim() === ""){
+  if (obj_to_update.nome_competencia.trim() === "" || obj_to_update.descricao_competencia.trim() === ""){
     return res.status(400).json({"mensagem":"Preencha todos os campos."});
   }
   competencias[obj_to_update.id-1] = obj_to_update;

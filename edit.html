@@ -95,21 +95,21 @@
           .then((data) => {
             data.forEach((obj) => {
               const option = document.createElement("option");
-              option.value = obj.id;
-              option.innerText = obj.nome;
+              option.value = obj.codigo_competencia;
+              option.innerText = obj.nome_competencia;
               select.appendChild(option);
               competences.push(obj);
             });
-            name_competence.value = competences[0].nome;
-            description_competence.value = competences[0].descricao;
+            name_competence.value = competences[0].nome_competencia;
+            description_competence.value = competences[0].descricao_competencia;
           });
       };
       get_competencias();
       select.addEventListener("change", async (e) => {
         await competences.forEach((val) => {
           if (val.id === parseInt(e.target.value)) {
-            name_competence.value = val.nome;
-            description_competence.value = val.descricao;
+            name_competence.value = val.nome_competencia;
+            description_competence.value = val.descricao_competencia;
           }
         });
       });
