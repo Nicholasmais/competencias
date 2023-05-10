@@ -1,6 +1,14 @@
 const express = require('express');
 const cors = require("cors");
 const morgan = require('morgan');
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection(
+  {
+    host: "localhost", user: "root", password: "648297315Nf!",
+    database: "mydb"
+  }
+);
 
 const app = express();
 
@@ -68,8 +76,11 @@ app.get('/', (req, res) => {
   res.send('Bem-vindo à minha API!');
 });
 
-app.get('/competencias', (req, res) => {
-  res.json(competencias);
+app.get('/competencias', async(req, res) => {
+  const sql = "SELECT * FROM competencias_descricao;";
+  connection.query(sql, function (err, result, fields) {
+    res.json(result);
+  })
 });
 
 app.post("/competencias", (req, res) => {

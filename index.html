@@ -52,13 +52,13 @@
             data.forEach((obj) => {
               const div_competencias = document.createElement("div");
               div_competencias.setAttribute("class", "div-competencias");
-              div_competencias.setAttribute("key", obj.id);
+              div_competencias.setAttribute("key", obj.codigo_competencia);
 
               const header = document.createElement("span");
               const content = document.createElement("div");
 
-              header.innerText = obj.nome;
-              content.innerText = obj.descricao;
+              header.innerText = obj.nome_competencia;
+              content.innerText = obj.descricao_competencia;
 
               div_competencias.appendChild(header);
               //div_competencias.appendChild(content);
